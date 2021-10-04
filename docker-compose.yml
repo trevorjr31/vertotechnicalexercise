@@ -1,0 +1,51 @@
+version: '3.3'
+services:
+  db:
+    image: 'mysql:5.7'
+    ports:
+      - '3306:3306'
+    networks:
+      - internal
+    environment:
+      - MYSQL_DATABASE=verto
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./www/db-data:/var/lib/mysql
+    container_name: vertodb
+    restart: always
+  
+  node:
+    build:
+      context: .
+      dockerfile: 'Dockerfile'
+    depends_on:
+      - db
+    networks:
+      - internal
+      - portfolio_default
+    ports:
+      - '5000:5000'
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_DB=vertoex
+    labels:
+      - 'traefik.port=5000'
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.vertonode.tls.certresolver=myresolver'
+      - 'traefik.http.routers.vertonode.entrypoints=websecure'
+      - 'traefik.http.routers.vertonode.rule=Host(`verto.trevorharvey.com`,`www.verto.trevorharvey.com`)'
+      - 'traefik.http.routers.vertonoder.entrypoints=web'
+      - 'traefik.http.routers.vertonoder.rule=Host(`verto.trevorharvey.com`,`www.verto.trevorharvey.com`)'
+
+    volumes:
+      - './www/:/var/www/html/'
+    container_name: vertonode
+    restart: always
+
+networks:
+  internal:
+    external: false
+  portfolio_default:
+    external: true

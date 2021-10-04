@@ -1,0 +1,22 @@
+{
+  "name": "vertoexercise",
+  "version": "1.0.0",
+  "description": "Technical Exercise for Verto Health",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --forceExit",
+    "start":"npm test && node server.js"
+  },
+  "author": "Trevor Harvey",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-mysql-session": "^2.1.7",
+    "express-session": "^1.17.2",
+    "jest": "^27.2.4",
+    "mysql": "^2.18.1",
+    "supertest": "^6.1.6"
+  }
+}
