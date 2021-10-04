@@ -28,3 +28,6 @@ API requires a MySQL database with schema 'vertoex' already created. After initi
 
 Test suite will execute prior to server connection.
 
+
+NOTE 
+***'vertofront' folder is not required for install/run. It is the raw vueJS client folder; client build is locatd in 'dist' folder***
