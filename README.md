@@ -13,6 +13,8 @@ RUN APP:
 
 npm start
 
+default PORT=5000
+
 API requires a MySQL database with schema 'vertoex' already created. After initial database is setup, import vertodb.sql datadump file to access database and edit MySQL credential fields in db.js.
 
 Test suite will execute prior to server connection.
