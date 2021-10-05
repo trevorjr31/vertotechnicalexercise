@@ -30,4 +30,4 @@ Test suite will execute prior to server connection.
 
 
 NOTE 
-***'vertofront' folder is not required for install/run. It is the raw vueJS client dev folder; required client build is locatd in 'dist' folder***
+***'vertofront' folder is not required for install/run. It is the raw vueJS client dev folder(https://github.com/trevorjr31/vertofront); required client build is locatd in 'dist' folder***
